@@ -2,28 +2,24 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace mad_cat
+namespace @try
 {
     public class Animation : GameObject
     {
         Rectangle Rectangle;
         Image[] Images;
-        Pen Pen;
         Form parent;
-        //TextureBrush [] TextureBrushes;
         Timer Timer = new Timer();
         bool flag = true;
         int index = 0;
 
-        public Animation(int x, int y, int width, int height, /*Color colorPen, int widthPen,*/ Form papa, params string[] images) : base(papa, x, y, width, height, images)
+        public Animation(int x, int y, int width, int height, Form papa, params string[] images) : base(papa, x, y, width, height, images)
         {
             Rectangle = new Rectangle(x, y, width, height);
+            parent = papa;
             Images = new Image[images.Length];
             for (int i = 0; i < images.Length; i++)
                 Images[i] = Image.FromFile(images[i]);
-            //Pen = new Pen(colorPen, widthPen);
-            //for(int i =0; i<Images.Length; i++)
-            //    TextureBrushes[i] = new TextureBrush(Images[i]);
 
             Timer.Interval = 500;
             Timer.Tick += Timer_Tick;
@@ -37,6 +33,12 @@ namespace mad_cat
             else index--;
             if (index == Images.Length - 1) flag = false;
             if (index == 0) flag = true;
+        }
+
+        public void ChangeImage(params string[] images)
+        {
+            for (int i = 0; i < images.Length; i++)
+                Images[i] = Image.FromFile(images[i]);
         }
 
         public void Move(int x, int y, int widthForm, int heightForm)
@@ -60,8 +62,6 @@ namespace mad_cat
         public override void Draw(Graphics g)
         {
             g.DrawImage(Images[index], Rectangle);
-            //g.DrawRectangle(Pen, Rectangle);
-            //parent.Invalidate();
         }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace mad_cat.Properties
+namespace @try.Properties
 {
 
 
