@@ -45,6 +45,8 @@ namespace @try
             if (index == 0) flag = true;
         }
 
+        //создать метод чэйндж имэйдж и проверку на текущую картинку
+
         public override void Draw(Graphics g)
         {
             g.DrawImage(Images[index], Rectangle);
