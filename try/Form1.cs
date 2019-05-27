@@ -16,14 +16,16 @@ namespace @try
         Animation cat;
         //ImportantThing[] hearts = new ImportantThing[3];
         //ImportantThing[] catFace = new ImportantThing[3];
-        ImportantThing heart;
-        ImportantThing catFace;
+        //ImportantThing heart;
+        //ImportantThing catFace;
         Timer timer = new Timer();
         int seconds = 0;
         int recSide = 300;
         bool flag = true;
         PictureBox bellyful = new PictureBox();
         PictureBox happiness = new PictureBox();
+        LiveElements heart;
+        LiveElements catFace;
 
         public ShityCat()
         {
@@ -41,10 +43,14 @@ namespace @try
             this.Controls.Add(bellyful);
             this.Controls.Add(happiness);
 
-            heart = new ImportantThing(130, 0, 120, 40, this, 1000, "..\\..\\images\\hearts_3.jpg",
-            "..\\..\\images\\hearts_2.jpg", "..\\..\\images\\hearts_1.jpg", "..\\..\\images\\zero.jpg");
-            catFace = new ImportantThing(130, 50, 120, 40, this, 2000, "..\\..\\images\\catFace_3.jpg",
+            heart = new LiveElements(130, 0, 120, 40, 1000, this, "..\\..\\images\\hearts_3.jpg",
+                "..\\..\\images\\hearts_2.jpg", "..\\..\\images\\hearts_1.jpg", "..\\..\\images\\zero.jpg");
+            catFace = new LiveElements(130, 50, 120, 40, 2000, this, "..\\..\\images\\catFace_3.jpg",
                 "..\\..\\images\\catFace_2.jpg", "..\\..\\images\\catFace_1.jpg", "..\\..\\images\\zero.jpg");
+            //heart = new ImportantThing(130, 0, 120, 40, this, 1000, "..\\..\\images\\hearts_3.jpg",
+            //"..\\..\\images\\hearts_2.jpg", "..\\..\\images\\hearts_1.jpg", "..\\..\\images\\zero.jpg");
+            //catFace = new ImportantThing( 130, 50, 120, 40, this, 2000, "..\\..\\images\\catFace_3.jpg",
+                //"..\\..\\images\\catFace_2.jpg", "..\\..\\images\\catFace_1.jpg", "..\\..\\images\\zero.jpg");
 
             timer.Interval = 100;
             timer.Tick += Timer_Tick;
@@ -62,8 +68,8 @@ namespace @try
         private void ShityCat_Paint(object sender, PaintEventArgs e)
         {
             this.DoubleBuffered = true;
-            heart.Draw(e.Graphics);
-            catFace.Draw(e.Graphics);
+            //heart.Draw(e.Graphics);
+            //catFace.Draw(e.Graphics);
             if (flag == false)
             {
                 cat.ChangeImage("..\\..\\images\\lff_0.jpg", "..\\..\\images\\lff_1.jpg");
@@ -91,7 +97,13 @@ namespace @try
 
         private void toFeed_Click(object sender, EventArgs e)
         {
+            toFeed.Image = Image.FromFile("..\\..\\images\\toFeed_c.jpg");
+            heart.Click();
+        }
 
+        private void toPlay_Click(object sender, EventArgs e)
+        {
+            toPlay.Image = Image.FromFile("..\\..\\images\\toPlay_c.jpg");
         }
     }
 }

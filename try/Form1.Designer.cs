@@ -58,6 +58,7 @@
             this.toPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.toPlay.TabIndex = 1;
             this.toPlay.TabStop = false;
+            this.toPlay.Click += new System.EventHandler(this.toPlay_Click);
             this.toPlay.MouseEnter += new System.EventHandler(this.toPlay_MouseEnter);
             this.toPlay.MouseLeave += new System.EventHandler(this.toPlay_MouseLeave);
             // 
