@@ -1,8 +1,5 @@
 ﻿1>------ Сборка начата: проект: try, Конфигурация: Debug Any CPU ------
-1>C:\Users\viki2\source\repos\mad_cat\try\Component.cs(9,17,9,23): warning CS0108: "ImportantThing.images" скрывает наследуемый член "GameObject.images". Если скрытие было намеренным, используйте ключевое слово new.
 1>C:\Users\viki2\source\repos\mad_cat\try\Animation.cs(11,14,11,20): warning CS0108: "Animation.parent" скрывает наследуемый член "GameObject.parent". Если скрытие было намеренным, используйте ключевое слово new.
-1>C:\Users\viki2\source\repos\mad_cat\try\Component.cs(13,13,13,20): warning CS0169: Поле "ImportantThing.seconds" никогда не используется.
 1>C:\Users\viki2\source\repos\mad_cat\try\LiveElements.cs(17,14,17,18): warning CS0414: Полю "LiveElements.flag" присвоено значение, но оно ни разу не использовано.
-1>C:\Users\viki2\source\repos\mad_cat\try\Component.cs(14,13,14,23): warning CS0414: Полю "ImportantThing.tenSeconds" присвоено значение, но оно ни разу не использовано.
 1>  try -> C:\Users\viki2\source\repos\mad_cat\try\bin\Debug\@try.exe
 ========== Сборка: успешно: 1, с ошибками: 0, без изменений: 0, пропущено: 0 ==========

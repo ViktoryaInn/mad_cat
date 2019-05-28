@@ -47,19 +47,35 @@ namespace @try
 
         public void Click()
         {
-            if(images[index]==images[3])
+            //if(images[index]==images[3])
+            //{
+            //    index=index -2;
+            //}
+            //else
+            //{
+            //    if(images[index]==images[2])
+            //    {
+            //        index=index-2;
+            //    }
+            //    else
+            //    {
+            //        if (images[index] == images[1]) index--;
+            //    }
+            //}
+
+            if(index == images.Length-1)
             {
-                index--;
+                index = index - 2;
             }
             else
             {
-                if(images[index]==images[2])
+                if(index==2)
                 {
-                    index--;
+                    index = index - 2;
                 }
                 else
                 {
-                    if (images[index] == images[1]) index--;
+                    if (index == 1) index--;
                 }
             }
         }

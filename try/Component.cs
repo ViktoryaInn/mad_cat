@@ -3,28 +3,28 @@ using System.Drawing;
 
 namespace @try
 {
-    public class ImportantThing : GameObject
+    public class ImportantThing 
     {
-        Rectangle Rectangle;
-        Image[] images;
-        Form Parent;
-        int Interval;
+        PictureBox pictureBox = new PictureBox();
+        Image image;
+        Form parent;
+        int interval;
         Timer timer = new Timer();
-        int seconds;
-        int tenSeconds = 10000;
-        int index = 0;
-        bool flag = true;
+        int seconds=0;
+        int oneSecond = 1000;
 
-        public ImportantThing(int x, int y, int width, int height, Form papa, int interval, params string[] imgs) : base(papa, x, y, width, height, imgs)
+        public ImportantThing(int x, int y, int width, int height, Form papa,int interval, string img)
         {
-            Rectangle = new Rectangle(x, y, width, height);
-            Parent = papa;
-            this.images = new Image[imgs.Length];
-            for (int i = 0; i < imgs.Length; i++)
-                this.images[i] = Image.FromFile(imgs[i]);
-            Interval = interval;
+            pictureBox.Location = new Point(x, y);
+            pictureBox.Size = new Size(width, height);
+            pictureBox.BackgroundImage = Image.FromFile("..\\..\\images\\фон.jpg");
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            parent = papa;
+            parent.Controls.Add(pictureBox);
+            image = Image.FromFile(img);         
+            this.interval = interval;
 
-            timer.Interval = interval;
+            timer.Interval = oneSecond;
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -32,24 +32,22 @@ namespace @try
 
         private void Timer_Tick(object sender, System.EventArgs e)
         {
-            //seconds += tenSeconds;
-            //if (index == 0) index=imgs.Length-1;
-            //if(seconds%Interval==0  && index!=0) index--;
-
-            if (index == images.Length) flag = false;
-            if (flag) index++;
-            else index--;
-            if (index == images.Length - 1) flag = false;
-            if (index == 0) flag = true;
+            seconds += oneSecond;
+            if (seconds < interval)
+                pictureBox.Image = image;
+            else //pictureBox.Image = Image.FromFile("..\\..\\images\\фон.jpg");
+                pictureBox.Visible = false;
         }
 
-        //создать метод чэйндж имэйдж и проверку на текущую картинку(CurrentImage())
-
-
-
-        public override void Draw(Graphics g)
+        public void Restore()
         {
-            g.DrawImage(images[index], rectangle);
+            pictureBox.Visible = true;
         }
+
+        public bool Visible()
+        {
+            return pictureBox.Visible;
+        }
+        //создать метод чэйндж имэйдж и проверку на текущую картинку(CurrentImage())
     }
 }
