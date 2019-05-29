@@ -45,9 +45,9 @@ namespace @try
             //"..\\..\\images\\hearts_2.jpg", "..\\..\\images\\hearts_1.jpg", "..\\..\\images\\zero.jpg");
             //catFace = new LiveElements(130, 50, 120, 40, 2000, this, "..\\..\\images\\catFace_3.jpg",
             //"..\\..\\images\\catFace_2.jpg", "..\\..\\images\\catFace_1.jpg", "..\\..\\images\\zero.jpg");
-            hearts[0] = new ImportantThing(130, 0, 40, 40, this, 6000, "..\\..\\images\\heart.jpg");
-            hearts[1] = new ImportantThing(170, 0, 40, 40, this, 4000, "..\\..\\images\\heart.jpg");
-            hearts[2] = new ImportantThing(210, 0, 40, 40, this, 2000, "..\\..\\images\\heart.jpg");
+            hearts[0] = new ImportantThing(130, 0, 40, 40, this, 12000, "..\\..\\images\\heart.jpg");
+            hearts[1] = new ImportantThing(170, 0, 40, 40, this, 8000, "..\\..\\images\\heart.jpg");
+            hearts[2] = new ImportantThing(210, 0, 40, 40, this, 4000, "..\\..\\images\\heart.jpg");
 
             timer.Interval = 100;
             timer.Tick += Timer_Tick;
@@ -94,14 +94,30 @@ namespace @try
 
         private void toFeed_Click(object sender, EventArgs e)
         {
+            
             toFeed.Image = Image.FromFile("..\\..\\images\\toFeed_c.jpg");
-            if ((hearts[2].Visible()==false) && (hearts[0].Visible()==true) && (hearts[1].Visible()==true)) hearts[2].Restore();
+            if ((hearts[2].Visible() == false) && (hearts[0].Visible() == true) && (hearts[1].Visible() == true))
+            {
+                hearts[2].Restore();
+                hearts[0].RestartTimer();
+                hearts[1].RestartTimer();
+            }
             else
             {
-                if ((hearts[2].Visible() == true) && (hearts[0].Visible() == false) && (hearts[1].Visible() == false)) hearts[1].Restore();
+                if ((hearts[2].Visible() == false) && (hearts[0].Visible() == true) && (hearts[1].Visible() == false))
+                {
+                    hearts[1].Restore();
+                    hearts[0].RestartTimer();
+                    hearts[2].RestartTimer();
+                }
                 else
                 {
-                    if ((hearts[2].Visible() == false) && (hearts[0].Visible() == false) && (hearts[1].Visible() == false)) hearts[0].Restore();
+                    if ((hearts[2].Visible() == false) && (hearts[0].Visible() == false) && (hearts[1].Visible() == false))
+                    {
+                        hearts[0].Restore();
+                        hearts[1].RestartTimer();
+                        hearts[2].RestartTimer();
+                    }
                     //нужно как-то связать сердечки и тацмер, чтобы они работали сообща , а не каждое жило своей отдельной жизнью так сказать
                 }
             }

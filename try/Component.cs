@@ -42,11 +42,19 @@ namespace @try
         public void Restore()
         {
             pictureBox.Visible = true;
+            timer.Stop();
+            timer.Start();
         }
 
         public bool Visible()
         {
             return pictureBox.Visible;
+        }
+
+        public void RestartTimer()
+        {
+            timer.Stop();
+            timer.Start();
         }
         //создать метод чэйндж имэйдж и проверку на текущую картинку(CurrentImage())
     }
