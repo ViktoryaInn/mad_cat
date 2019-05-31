@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace @try
 {
-    public class Animation : GameObject
+    public class Animation 
     {
         Rectangle Rectangle;
         Image[] Images;
@@ -13,7 +13,7 @@ namespace @try
         bool flag = true;
         int index = 0;
 
-        public Animation(int x, int y, int width, int height, Form papa, params string[] images) : base(papa, x, y, width, height, images)
+        public Animation(int x, int y, int width, int height, Form papa, params string[] images)
         {
             Rectangle = new Rectangle(x, y, width, height);
             parent = papa;
@@ -35,11 +35,11 @@ namespace @try
             if (index == 0) flag = true;
         }
 
-        public void ChangeImage(params string[] images)
-        {
-            for (int i = 0; i < images.Length; i++)
-                Images[i] = Image.FromFile(images[i]);
-        }
+        //public void ChangeImage(params string[] images)
+        //{
+        //    for (int i = 0; i < images.Length; i++)
+        //        Images[i] = Image.FromFile(images[i]);
+        //}
 
         public void Move(int x, int y, int widthForm, int heightForm)
         {
@@ -59,8 +59,10 @@ namespace @try
             }
         }
 
-        public override void Draw(Graphics g)
+        public void ChangeAndDraw(Graphics g, params string [] images)
         {
+            for (int i = 0; i < images.Length; i++)
+                Images[i] = Image.FromFile(images[i]);
             g.DrawImage(Images[index], Rectangle);
         }
     }

@@ -45,9 +45,12 @@ namespace @try
             //"..\\..\\images\\hearts_2.jpg", "..\\..\\images\\hearts_1.jpg", "..\\..\\images\\zero.jpg");
             //catFace = new LiveElements(130, 50, 120, 40, 2000, this, "..\\..\\images\\catFace_3.jpg",
             //"..\\..\\images\\catFace_2.jpg", "..\\..\\images\\catFace_1.jpg", "..\\..\\images\\zero.jpg");
-            hearts[0] = new ImportantThing(130, 0, 40, 40, this, 12000, "..\\..\\images\\heart.jpg");
-            hearts[1] = new ImportantThing(170, 0, 40, 40, this, 8000, "..\\..\\images\\heart.jpg");
-            hearts[2] = new ImportantThing(210, 0, 40, 40, this, 4000, "..\\..\\images\\heart.jpg");
+            hearts[0] = new ImportantThing(130, 0, 40, 40, this, 18000, "..\\..\\images\\heart.jpg");
+            hearts[1] = new ImportantThing(170, 0, 40, 40, this, 12000, "..\\..\\images\\heart.jpg");
+            hearts[2] = new ImportantThing(210, 0, 40, 40, this, 6000, "..\\..\\images\\heart.jpg");
+            catFaces[0] = new ImportantThing(130, 50, 40, 40, this, 12000, "..\\..\\images\\catFace.jpg");
+            catFaces[1] = new ImportantThing(170, 50, 40, 40, this, 8000, "..\\..\\images\\catFace.jpg");
+            catFaces[2] = new ImportantThing(210, 50, 40, 40, this, 4000, "..\\..\\images\\catFace.jpg");
 
             timer.Interval = 100;
             timer.Tick += Timer_Tick;
@@ -57,31 +60,52 @@ namespace @try
         private void Timer_Tick(object sender, EventArgs e)
         {
             this.Invalidate();
-            seconds += 100;
-            if ((seconds / 2000) % 2 == 0) flag = false;
-            else flag = true;
+            //seconds += 100;
+            //if ((seconds / 2000) % 2 == 0) flag = false;
+            //else flag = true;
         }
 
         private void ShityCat_Paint(object sender, PaintEventArgs e)
         {
             this.DoubleBuffered = true;
-            //heart.Draw(e.Graphics);
-            //catFace.Draw(e.Graphics);
-            if (flag == false)
-            {
-                cat.ChangeImage("..\\..\\images\\lff_0.jpg", "..\\..\\images\\lff_1.jpg");
-                cat.Draw(e.Graphics);
-            }
-            else
-            {
-                cat.ChangeImage("..\\..\\images\\happy_0.jpg", "..\\..\\images\\happy_1.jpg");
-                cat.Draw(e.Graphics);
-            }
+            if (hearts[0].Visible() && hearts[1].Visible() && hearts[2].Visible() &&
+                catFaces[0].Visible() && catFaces[1].Visible() && catFaces[2].Visible())
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\happy_0.jpg", "..\\..\\images\\happy_1.jpg");
+            if (hearts[0].Visible() && hearts[1].Visible() && hearts[2].Visible() &&
+                catFaces[0].Visible() && catFaces[1].Visible() && (!catFaces[2].Visible()))
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\ok_0.jpg", "..\\..\\images\\ok_1.jpg");
+            else if (hearts[0].Visible() && hearts[1].Visible() && hearts[2].Visible() &&
+                catFaces[0].Visible() && (!catFaces[1].Visible()) && (!catFaces[2].Visible()))
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\sad_0.jpg", "..\\..\\images\\sad_1.jpg");
+            else if (hearts[0].Visible() && hearts[1].Visible() && hearts[2].Visible() &&
+                (!catFaces[0].Visible()) && (!catFaces[1].Visible()) && (!catFaces[2].Visible()))
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\very_sad_0.jpg", "..\\..\\images\\very_sad_1.jpg");
+            else if (hearts[0].Visible() && hearts[1].Visible() && (!hearts[2].Visible()) &&
+                (catFaces[0].Visible() && catFaces[1].Visible() && catFaces[2].Visible() ||
+                catFaces[0].Visible() && catFaces[1].Visible() && (!catFaces[2].Visible()) ||
+                catFaces[0].Visible() && (!catFaces[1].Visible()) && (!catFaces[2].Visible()) ||
+                (!catFaces[0].Visible()) && (!catFaces[1].Visible()) && (!catFaces[2].Visible())))
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\dream_0.jpg", "..\\..\\images\\dream_1.jpg");
+            else if (hearts[0].Visible() && (!hearts[1].Visible()) && (!hearts[2].Visible()) &&
+                (catFaces[0].Visible() && catFaces[1].Visible() && catFaces[2].Visible() ||
+                catFaces[0].Visible() && catFaces[1].Visible() && (!catFaces[2].Visible()) ||
+                catFaces[0].Visible() && (!catFaces[1].Visible()) && (!catFaces[2].Visible())))
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\lff_0.jpg", "..\\..\\images\\lff_1.jpg");
+            else if (!hearts[0].Visible() && !hearts[1].Visible() && !hearts[2].Visible() &&
+                (catFaces[0].Visible() && !catFaces[1].Visible() && !catFaces[2].Visible() ||
+                catFaces[0].Visible() && catFaces[1].Visible() && !catFaces[2].Visible() ||
+                catFaces[0].Visible() && catFaces[1].Visible() && catFaces[2].Visible()) ||
+                (!catFaces[0].Visible() && !catFaces[1].Visible() && !catFaces[2].Visible() &&
+                hearts[0].Visible() && !hearts[1].Visible() && !hearts[2].Visible()))
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\mad_0.jpg", "..\\..\\images\\mad_1.jpg");
+            else if (!hearts[0].Visible() && !hearts[1].Visible() && !hearts[2].Visible() &&
+                !catFaces[0].Visible() && !catFaces[1].Visible() && !catFaces[2].Visible())
+                cat.ChangeAndDraw(e.Graphics, "..\\..\\images\\dead_0.jpg", "..\\..\\images\\dead_1.jpg");
+            
         }
 
         private void ShityCat_Load(object sender, EventArgs e)
         {
-
         }
 
         private void toFeed_MouseEnter(object sender, EventArgs e) => toFeed.Image = Image.FromFile("..\\..\\images\\toFeed_d.jpg");
@@ -94,38 +118,47 @@ namespace @try
 
         private void toFeed_Click(object sender, EventArgs e)
         {
-            
             toFeed.Image = Image.FromFile("..\\..\\images\\toFeed_c.jpg");
-            if ((hearts[2].Visible() == false) && (hearts[0].Visible() == true) && (hearts[1].Visible() == true))
-            {
-                hearts[2].Restore();
-                hearts[0].RestartTimer();
-                hearts[1].RestartTimer();
-            }
-            else
-            {
-                if ((hearts[2].Visible() == false) && (hearts[0].Visible() == true) && (hearts[1].Visible() == false))
-                {
-                    hearts[1].Restore();
-                    hearts[0].RestartTimer();
-                    hearts[2].RestartTimer();
-                }
-                else
-                {
-                    if ((hearts[2].Visible() == false) && (hearts[0].Visible() == false) && (hearts[1].Visible() == false))
-                    {
-                        hearts[0].Restore();
-                        hearts[1].RestartTimer();
-                        hearts[2].RestartTimer();
-                    }
-                    //нужно как-то связать сердечки и тацмер, чтобы они работали сообща , а не каждое жило своей отдельной жизнью так сказать
-                }
-            }
+            //if ((hearts[2].Visible() == false) && (hearts[0].Visible() == true) && (hearts[1].Visible() == true))
+            //    ChangeElement(2, 0, 1, hearts);
+            //else if ((hearts[1].Visible() == false) && (hearts[0].Visible() == true) && (hearts[2].Visible() == false))
+            //    ChangeElement(1, 0, 2, hearts);
+            //else if ((hearts[0].Visible() == false) && (hearts[1].Visible() == false) && (hearts[2].Visible() == false))
+            //    ChangeElement(0, 1, 2, hearts);
+            if ((!hearts[2].Visible()) && (hearts[0].Visible()) && (hearts[1].Visible()))
+                ChangeElement(2, 0, 1, hearts);
+            else if ((!hearts[1].Visible()) && (hearts[0].Visible()) && (!hearts[2].Visible()))
+                ChangeElement(1, 0, 2, hearts);
+            else if ((!hearts[0].Visible()) && (!hearts[1].Visible()) && (!hearts[2].Visible()))
+                ChangeElement(0, 1, 2, hearts);
+        }
+
+        private void ChangeElement(int a, int b, int c, ImportantThing [] things)
+        {
+            things[a].Restore();
+            things[b].RestartTimer();
+            things[c].RestartTimer();
         }
 
         private void toPlay_Click(object sender, EventArgs e)
         {
             toPlay.Image = Image.FromFile("..\\..\\images\\toPlay_c.jpg");
+            if ((!catFaces[2].Visible()) && (catFaces[0].Visible()) && (catFaces[1].Visible()))
+                ChangeElement(2, 0, 1, catFaces);
+            else if ((!catFaces[1].Visible()) && (catFaces[0].Visible()) && (!catFaces[2].Visible()))
+                ChangeElement(1, 0, 2, catFaces);
+            else if ((!catFaces[0].Visible()) && (!catFaces[1].Visible()) && (!catFaces[2].Visible()))
+                ChangeElement(0, 1, 2, catFaces);
+        }
+
+        private void toPlay_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void toPlay_DoubleClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

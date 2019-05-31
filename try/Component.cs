@@ -42,8 +42,7 @@ namespace @try
         public void Restore()
         {
             pictureBox.Visible = true;
-            timer.Stop();
-            timer.Start();
+            seconds = 0;
         }
 
         public bool Visible()
@@ -53,9 +52,18 @@ namespace @try
 
         public void RestartTimer()
         {
-            timer.Stop();
-            timer.Start();
+            seconds = 0;
         }
+
+        //public int Lenght(ImportantThing [] things)
+        //{
+        //    int result = 0;
+        //    foreach(var thing in things)
+        //    {
+        //        if (thing.Visible()) result++;
+        //    }
+        //    return result;
+        //}
         //создать метод чэйндж имэйдж и проверку на текущую картинку(CurrentImage())
     }
 }
