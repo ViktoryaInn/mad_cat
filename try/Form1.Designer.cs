@@ -38,7 +38,7 @@
             // toFeed
             // 
             this.toFeed.Image = ((System.Drawing.Image)(resources.GetObject("toFeed.Image")));
-            this.toFeed.Location = new System.Drawing.Point(550, 100);
+            this.toFeed.Location = new System.Drawing.Point(435, 149);
             this.toFeed.Margin = new System.Windows.Forms.Padding(0);
             this.toFeed.Name = "toFeed";
             this.toFeed.Size = new System.Drawing.Size(209, 70);
@@ -52,7 +52,7 @@
             // toPlay
             // 
             this.toPlay.Image = ((System.Drawing.Image)(resources.GetObject("toPlay.Image")));
-            this.toPlay.Location = new System.Drawing.Point(550, 250);
+            this.toPlay.Location = new System.Drawing.Point(435, 289);
             this.toPlay.Name = "toPlay";
             this.toPlay.Size = new System.Drawing.Size(200, 65);
             this.toPlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -67,10 +67,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(800, 526);
+            this.ClientSize = new System.Drawing.Size(671, 457);
             this.Controls.Add(this.toPlay);
             this.Controls.Add(this.toFeed);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShityCat";
             this.Text = "ShityCat";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ShityCat_Paint);

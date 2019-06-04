@@ -24,26 +24,26 @@ namespace @try
         public ShityCat()
         {
             InitializeComponent();
-            cat = new Animation(100, 100, 300, this, "..\\..\\images\\happy_0.jpg", "..\\..\\images\\happy_1.jpg");
+            cat = new Animation(20, 100, 300, this, "..\\..\\images\\happy_0.jpg", "..\\..\\images\\happy_1.jpg");
             bellyful = new PictureBox()
             {
-                Location = new Point(0, 0),
-                Size = new Size(130, 40),
+                Location = new Point(10, 5),
+                Size = new Size(130, 50),
                 Image = Image.FromFile("..\\..\\images\\bellyful.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             this.Controls.Add(bellyful);
             happiness = new PictureBox()
             {
-                Location = new Point(0, 50),
+                Location = new Point(10, 60),
                 Size = new Size(120, 40),
                 Image = Image.FromFile("..\\..\\images\\happiness.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             this.Controls.Add(happiness);
 
-            heart = new LiveElements(3, 130, 0, 40, 2000, this, Image.FromFile("..\\..\\images\\heart.jpg"));
-            catFace = new LiveElements(3, 130, 50, 40, 3000, this, Image.FromFile("..\\..\\images\\catFace.jpg"));
+            heart = new LiveElements(3, 140, 5, 40, 2000, this, Image.FromFile("..\\..\\images\\heart.jpg"));
+            catFace = new LiveElements(3, 140, 60, 40, 3000, this, Image.FromFile("..\\..\\images\\catFace.jpg"));
 
             timer.Interval = 100;
             timer.Tick += Timer_Tick;
@@ -77,7 +77,7 @@ namespace @try
                 || heart.Lenght() == 0 && catFace.Lenght() == 1 || heart.Lenght() == 1 && catFace.Lenght() == 0)
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\mad_0.jpg", "..\\..\\images\\mad_1.jpg");
             else if (heart.Lenght() == 0 && catFace.Lenght() == 0)
-                cat.DrawAndChange(e.Graphics, "..\\..\\images\\dead_0.jpg", "..\\..\\images\\daed_1.jpg");
+                cat.DrawAndChange(e.Graphics, "..\\..\\images\\dead_0.jpg", "..\\..\\images\\dead_1.jpg");
         }
 
         private void toFeed_Click(object sender, EventArgs e)
