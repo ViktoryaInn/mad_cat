@@ -70,13 +70,13 @@ namespace @try
             PictureBox result = new PictureBox();
             for (int i = 0; i < pictureBoxes.Length; i++)
             {
+
                 if (i == index)
                 {
                     pictureBoxes[i].Visible = true;
                     seconds = 0;
                 }
-            }
-            
+            }   
         }
 
         public void RestartTimer()

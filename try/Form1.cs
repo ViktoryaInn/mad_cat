@@ -19,7 +19,7 @@ namespace @try
         PictureBox happiness;
         LiveElements heart;
         LiveElements catFace;
-        MessageBox messageBox;
+        int seconds = 0;
 
         public ShityCat()
         {
@@ -53,13 +53,14 @@ namespace @try
         private void Timer_Tick(object sender, EventArgs e)
         {
             this.Invalidate();
+            seconds += timer.Interval;
         }
 
         private void ShityCat_Paint(object sender, PaintEventArgs e)
         {
             this.DoubleBuffered = true;
             cat.DrawAndChange(e.Graphics);
-            if(heart.Lenght()==3 && catFace.Lenght()==3)
+            if (heart.Lenght() == 3 && catFace.Lenght() == 3)
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\happy_0.jpg", "..\\..\\images\\happy_1.jpg");
             else if (heart.Lenght() == 3 && catFace.Lenght() == 2)
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\ok_0.jpg", "..\\..\\images\\ok_1.jpg");
@@ -67,7 +68,7 @@ namespace @try
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\sad_0.jpg", "..\\..\\images\\sad_1.jpg");
             else if (heart.Lenght() == 3 && catFace.Lenght() == 0)
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\very_sad_0.jpg", "..\\..\\images\\very_sad_1.jpg");
-            else if (heart.Lenght() == 2 && catFace.Lenght() == 3 || heart.Lenght() == 2 && catFace.Lenght() == 2 
+            else if (heart.Lenght() == 2 && catFace.Lenght() == 3 || heart.Lenght() == 2 && catFace.Lenght() == 2
                 || heart.Lenght() == 2 && catFace.Lenght() == 1 || heart.Lenght() == 2 && catFace.Lenght() == 0)
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\dream_0.jpg", "..\\..\\images\\dream_1.jpg");
             else if (heart.Lenght() == 1 && catFace.Lenght() == 3 || heart.Lenght() == 1 && catFace.Lenght() == 2
@@ -77,7 +78,11 @@ namespace @try
                 || heart.Lenght() == 0 && catFace.Lenght() == 1 || heart.Lenght() == 1 && catFace.Lenght() == 0)
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\mad_0.jpg", "..\\..\\images\\mad_1.jpg");
             else if (heart.Lenght() == 0 && catFace.Lenght() == 0)
+            {
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\dead_0.jpg", "..\\..\\images\\dead_1.jpg");
+                
+                end_game.Visible = true;
+            }
         }
 
         private void toFeed_Click(object sender, EventArgs e)
@@ -108,5 +113,34 @@ namespace @try
         private void toPlay_MouseEnter(object sender, EventArgs e) => toPlay.Image = Image.FromFile("..\\..\\images\\toPlay_d.jpg");
 
         private void toPlay_MouseLeave(object sender, EventArgs e) => toPlay.Image = Image.FromFile("..\\..\\images\\toPlay.jpg");
+
+        private void ShityCat_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void no_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void yes_Click(object sender, EventArgs e)
+        {
+            heart.Restore(0);
+            heart.Restore(1);
+            heart.Restore(2);
+            catFace.Restore(0);
+            catFace.Restore(1);
+            catFace.Restore(2);
+            end_game.Visible = false;
+        }
+
+        private void yes_MouseEnter(object sender, EventArgs e) => yes.Image = Image.FromFile("..\\..\\images\\yes_m.jpg");
+
+        private void yes_MouseLeave(object sender, EventArgs e) => yes.Image = Image.FromFile("..\\..\\images\\yes.jpg");
+
+        private void no_MouseEnter(object sender, EventArgs e) => no.Image = Image.FromFile("..\\..\\images\\no_m.jpg");
+
+        private void no_MouseLeave(object sender, EventArgs e) => no.Image = Image.FromFile("..\\..\\images\\no.jpg");
     }
 }
