@@ -59,8 +59,6 @@
             this.toPlay.TabIndex = 1;
             this.toPlay.TabStop = false;
             this.toPlay.Click += new System.EventHandler(this.toPlay_Click);
-            this.toPlay.DoubleClick += new System.EventHandler(this.toPlay_DoubleClick);
-            this.toPlay.MouseClick += new System.Windows.Forms.MouseEventHandler(this.toPlay_MouseClick);
             this.toPlay.MouseEnter += new System.EventHandler(this.toPlay_MouseEnter);
             this.toPlay.MouseLeave += new System.EventHandler(this.toPlay_MouseLeave);
             // 
@@ -75,7 +73,6 @@
             this.DoubleBuffered = true;
             this.Name = "ShityCat";
             this.Text = "ShityCat";
-            this.Load += new System.EventHandler(this.ShityCat_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ShityCat_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.toFeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toPlay)).EndInit();
