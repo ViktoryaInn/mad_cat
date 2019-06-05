@@ -32,15 +32,15 @@
             this.toFeed = new System.Windows.Forms.PictureBox();
             this.toPlay = new System.Windows.Forms.PictureBox();
             this.end_game = new System.Windows.Forms.Panel();
-            this.text = new System.Windows.Forms.PictureBox();
-            this.yes = new System.Windows.Forms.PictureBox();
             this.no = new System.Windows.Forms.PictureBox();
+            this.yes = new System.Windows.Forms.PictureBox();
+            this.text = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.toFeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toPlay)).BeginInit();
             this.end_game.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.text)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.no)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.text)).BeginInit();
             this.SuspendLayout();
             // 
             // toFeed
@@ -83,15 +83,18 @@
             this.end_game.TabIndex = 2;
             this.end_game.Visible = false;
             // 
-            // text
+            // no
             // 
-            this.text.Image = ((System.Drawing.Image)(resources.GetObject("text.Image")));
-            this.text.Location = new System.Drawing.Point(86, 50);
-            this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(441, 210);
-            this.text.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.text.TabIndex = 0;
-            this.text.TabStop = false;
+            this.no.Image = ((System.Drawing.Image)(resources.GetObject("no.Image")));
+            this.no.Location = new System.Drawing.Point(350, 311);
+            this.no.Name = "no";
+            this.no.Size = new System.Drawing.Size(151, 71);
+            this.no.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.no.TabIndex = 2;
+            this.no.TabStop = false;
+            this.no.Click += new System.EventHandler(this.no_Click);
+            this.no.MouseEnter += new System.EventHandler(this.no_MouseEnter);
+            this.no.MouseLeave += new System.EventHandler(this.no_MouseLeave);
             // 
             // yes
             // 
@@ -106,18 +109,15 @@
             this.yes.MouseEnter += new System.EventHandler(this.yes_MouseEnter);
             this.yes.MouseLeave += new System.EventHandler(this.yes_MouseLeave);
             // 
-            // no
+            // text
             // 
-            this.no.Image = ((System.Drawing.Image)(resources.GetObject("no.Image")));
-            this.no.Location = new System.Drawing.Point(350, 311);
-            this.no.Name = "no";
-            this.no.Size = new System.Drawing.Size(151, 71);
-            this.no.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.no.TabIndex = 2;
-            this.no.TabStop = false;
-            this.no.Click += new System.EventHandler(this.no_Click);
-            this.no.MouseEnter += new System.EventHandler(this.no_MouseEnter);
-            this.no.MouseLeave += new System.EventHandler(this.no_MouseLeave);
+            this.text.Image = ((System.Drawing.Image)(resources.GetObject("text.Image")));
+            this.text.Location = new System.Drawing.Point(86, 50);
+            this.text.Name = "text";
+            this.text.Size = new System.Drawing.Size(441, 210);
+            this.text.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.text.TabIndex = 0;
+            this.text.TabStop = false;
             // 
             // ShityCat
             // 
@@ -137,9 +137,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.toFeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toPlay)).EndInit();
             this.end_game.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.text)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.no)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.yes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.text)).EndInit();
             this.ResumeLayout(false);
 
         }

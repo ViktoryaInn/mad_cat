@@ -15,16 +15,18 @@ namespace @try
     {
         Animation cat;
         Timer timer = new Timer();
+        Timer timer1 = new Timer();
         PictureBox bellyful;
         PictureBox happiness;
         LiveElements heart;
         LiveElements catFace;
         int seconds = 0;
+        int sec = 0;
 
         public ShityCat()
         {
             InitializeComponent();
-            cat = new Animation(20, 100, 300, this, "..\\..\\images\\happy_0.jpg", "..\\..\\images\\happy_1.jpg");
+            cat = new Animation(20, 100, 300, "..\\..\\images\\happy_0.jpg", "..\\..\\images\\happy_1.jpg");
             bellyful = new PictureBox()
             {
                 Location = new Point(10, 5),
@@ -80,8 +82,11 @@ namespace @try
             else if (heart.Lenght() == 0 && catFace.Lenght() == 0)
             {
                 cat.DrawAndChange(e.Graphics, "..\\..\\images\\dead_0.jpg", "..\\..\\images\\dead_1.jpg");
-                
-                end_game.Visible = true;
+                timer1.Interval = 5000;
+                timer1.Tick += timer1_Tick;
+                timer1.Start();
+
+               
             }
         }
 
@@ -133,6 +138,7 @@ namespace @try
             catFace.Restore(1);
             catFace.Restore(2);
             end_game.Visible = false;
+            sec = 0;
         }
 
         private void yes_MouseEnter(object sender, EventArgs e) => yes.Image = Image.FromFile("..\\..\\images\\yes_m.jpg");
@@ -142,5 +148,15 @@ namespace @try
         private void no_MouseEnter(object sender, EventArgs e) => no.Image = Image.FromFile("..\\..\\images\\no_m.jpg");
 
         private void no_MouseLeave(object sender, EventArgs e) => no.Image = Image.FromFile("..\\..\\images\\no.jpg");
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            sec += 5000;
+            if (sec == 5000)
+            {
+                end_game.Visible = true;
+                timer1.Stop();
+            }
+        }
     }
 }

@@ -8,15 +8,13 @@ namespace @try
     {
         Rectangle Rectangle;
         Image[] Images;
-        Form parent;
         Timer Timer = new Timer();
         bool flag = true;
         int index = 0;
 
-        public Animation(int x, int y, int recSide, Form papa, params string[] images)
+        public Animation(int x, int y, int recSide, params string[] images)
         {
             Rectangle = new Rectangle(x, y, recSide, recSide);
-            parent = papa;
             Images = new Image[images.Length];
             for (int i = 0; i < images.Length; i++)
                 Images[i] = Image.FromFile(images[i]);

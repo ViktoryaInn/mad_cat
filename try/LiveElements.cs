@@ -14,12 +14,6 @@ namespace @try
         int seconds = 0;
         int oneSecond = 1000;
 
-        //Image image;
-        //int interval;
-        //int index = 0;
-        //bool flag = true;
-        //Form parent;
-
         public LiveElements(int pbLenght, int x, int y, int eSize, int interval, Form parent, Image img)
         {
             pictureBoxes = new PictureBox[pbLenght];
